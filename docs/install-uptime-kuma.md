@@ -57,9 +57,7 @@ dir
 
 You should see `compose.yaml` in the directory.
 
-> **Note:** Uptime Kuma 2.x uses the `louislam/uptime-kuma:2` Docker image. The downloaded Compose configuration defines the Uptime Kuma service, persistent storage, and the port used to access the application.
-
-> **Important:** Store Uptime Kuma data on a local directory or Docker volume. Network filesystems such as NFS are not supported and can cause database locking or corruption problems.
+> **Note:** Uptime Kuma 2.x uses the `louislam/uptime-kuma:2` Docker image. The downloaded Compose configuration defines the Uptime Kuma service, persistent storage, and the port used to access the application. Store Uptime Kuma data on a local directory or Docker volume. Network filesystems such as NFS are not supported and can cause database locking or corruption problems.
 
 ## Start Uptime Kuma
 
