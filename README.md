@@ -2,7 +2,7 @@
 
 An independent technical documentation project for [Uptime Kuma](https://github.com/louislam/uptime-kuma), an open-source, self-hosted monitoring tool.
 
-This project documents a practical beginner workflow for installing Uptime Kuma, monitoring an HTTP endpoint, interpreting monitoring results, configuring Telegram alerts, and publishing a status page.
+This project documents a practical beginner workflow for installing Uptime Kuma, monitoring an HTTP endpoint, interpreting monitoring results, configuring Telegram alerts, and creating a status page.
 
 The documentation was developed through hands-on product testing with Uptime Kuma running locally in Docker.
 
@@ -28,9 +28,9 @@ The documentation was developed through hands-on product testing with Uptime Kum
 
 - [Create a Status Page](docs/create-status-page.md)
 
-## What this project covers
+## Documentation journey
 
-The documentation follows a beginner workflow from installation to basic monitoring:
+The documentation follows a beginner workflow from installation to communicating service availability:
 
 ```text
 Install Uptime Kuma
@@ -44,72 +44,102 @@ Configure Telegram notifications
 Create a status page
 ```
 
-The examples include both successful and failed monitoring scenarios. A deliberately invalid `.example` domain is used to demonstrate DNS failure behavior without depending on a real website being unavailable.
+## What I tested
+
+The procedures and examples were developed against a local Uptime Kuma installation rather than from product documentation alone.
+
+Testing included:
+
+- Installing Uptime Kuma with Docker Compose.
+- Configuring SQLite during initial setup.
+- Creating and running an HTTP monitor.
+- Triggering a controlled DNS resolution failure.
+- Observing Down and recovery states.
+- Pausing and resuming a monitor.
+- Configuring Telegram as a notification provider.
+- Receiving test, Down, repeated Down, and recovery notifications.
+- Creating a status page and publishing monitor information.
+
+The controlled failure test uses the reserved `.example` domain rather than depending on a real website being unavailable.
 
 ## Tested environment
 
-The documentation was developed and tested using:
+| Component | Environment |
+| --- | --- |
+| Uptime Kuma | 2.x |
+| Operating system | Windows 11 |
+| Container platform | Docker Desktop |
+| Container configuration | Docker Compose |
+| Terminal | PowerShell |
+| Database | SQLite |
+| Notification provider | Telegram |
 
-- Uptime Kuma 2.x
-- Docker Desktop
-- Docker Compose
-- Windows 11
-- PowerShell
-- SQLite for the initial Uptime Kuma setup
-- Telegram for notification testing
+## Documentation approach
+
+This project focuses on task-oriented documentation for users who are new to Uptime Kuma.
+
+The documentation is designed to:
+
+- Give each guide a clear user outcome.
+- Provide tested procedures and expected results.
+- Separate procedural instructions from conceptual explanations.
+- Explain errors in the context in which they occur.
+- Use screenshots when they help readers navigate or verify the interface.
+- Distinguish observed product behavior from assumptions.
+- Protect sensitive information such as passwords and API tokens.
+
+## Docs-as-Code workflow
+
+Documentation changes are managed through Git and GitHub using a pull-request workflow.
+
+GitHub Actions automatically checks documentation changes for:
+
+- Markdown quality and consistency.
+- Broken links.
+
+Security checks also help detect accidentally committed secrets.
+
+This workflow provides automated quality checks before documentation changes are merged into `main`.
 
 ## Repository structure
 
 ```text
 uptime-kuma-docs/
+├── .github/
+│   └── workflows/
+│       └── docs-quality.yml
 ├── docs/
 │   ├── install-uptime-kuma.md
 │   ├── create-http-monitor.md
-│   ├── understand-monitor-results.md
+│   ├── monitor-status-and-results.md
 │   ├── configure-telegram-notifications.md
 │   └── create-status-page.md
-│
 ├── images/
-│   └── ...
-│
+├── .gitignore
+├── .markdownlint.json
 └── README.md
 ```
 
-The `docs` directory contains the documentation set. The `images` directory contains screenshots captured during product testing.
+## Skills demonstrated
 
-## Testing approach
+This project demonstrates practical experience with:
 
-The procedures and examples in this project were tested against a local Uptime Kuma installation.
-
-Testing included:
-
-- Installing and starting Uptime Kuma with Docker Compose.
-- Creating a working HTTP monitor.
-- Triggering a controlled DNS resolution failure.
-- Observing Down and recovery states.
-- Configuring a Telegram bot as a notification provider.
-- Receiving test, Down, repeated Down, and recovery notifications.
-- Pausing and resuming a monitor.
-- Creating a status page and adding a monitor to it.
-
-Sensitive information such as administrator passwords and Telegram bot tokens is excluded from the repository.
-
-## Documentation approach
-
-The project focuses on task-oriented documentation for users who are new to Uptime Kuma.
-
-The documentation aims to:
-
-- Give readers a clear outcome for each guide.
-- Provide tested commands and procedures.
-- Explain expected results after important steps.
-- Distinguish product observations from assumptions.
-- Use screenshots only when they help readers navigate or verify the interface.
-- Explain errors in the context in which they occur.
-- Keep security-sensitive information out of examples and screenshots.
+- Technical writing
+- User and procedural documentation
+- Information architecture
+- Product investigation and testing
+- Markdown
+- Git and GitHub
+- Docs-as-Code
+- Pull requests and documentation review
+- GitHub Actions
+- Markdown linting
+- Automated link checking
+- Docker and Docker Compose
+- Technical troubleshooting
 
 ## Disclaimer
 
 This project is an independent documentation sample created for learning and portfolio purposes.
 
-Uptime Kuma is an open-source project maintained by its respective contributors. For official product information, releases, and documentation, refer to the [Uptime Kuma GitHub repository](https://github.com/louislam/uptime-kuma) and its official documentation.
+Uptime Kuma is an open-source project maintained by its respective contributors. Refer to the [official Uptime Kuma repository](https://github.com/louislam/uptime-kuma) for official documentation, releases, and product information.
